@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="Fly_away_musically">Музыкально отлететь</string>
+    <string name="title_button">Показать все места</string>
+    <string name="title_main_screen">Поиск дешевых  авиабилетов</string>
+    <string name="placeholder_Where">Куда - Турция</string>
+    <string name="placeholder_where_from">Минск</string>
+    <string name="title_navBottomSheet1">Сложный маршрут</string>
+    <string name="title_navBottomSheet2">Куда угодно</string>
+    <string name="title_navBottomSheet3">Выходные</string>
+    <string name="title_navBottomSheet4">Горячие билеты</string>
+    <string name="title_city1">Стамбул</string>
+    <string name="title_city2">Сочи</string>
+    <string name="title_city3">Пхукет</string>
+    <string name="title">Популярное направление</string>
+
+
+</resources>

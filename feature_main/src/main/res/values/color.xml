@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="back_search1">#2F3035</color>
+    <color name="back_search2">#3E3F43</color>
+    <color name="back_search3">#27282C</color>
+    <color name="Basic_Grey5">#5E5F61</color>
+    <color name="Basic_Grey_6">#9F9F9F</color>
+    <color name="Basic_Grey_3">#5E5F61</color>
+    <color name="Green_1">#124E13</color>
+    <color name="Blue">#1B97F0</color>
+    <color name="Blue_grey">#093962</color>
+    <color name="Red_orange">#F44336</color>
+
+</resources>
