@@ -23,3 +23,4 @@ rootProject.name = "Search Air Tickets"
 include(":app")
 include(":data")
 include(":domain")
+include(":feature_main")
