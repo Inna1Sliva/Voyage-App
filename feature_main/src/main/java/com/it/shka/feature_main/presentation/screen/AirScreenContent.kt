@@ -25,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -47,6 +48,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun AirScreenContent(onClickWereSearch:()->Unit) {
     val vm: DataViewModel = koinViewModel()
+    val offerState = vm.offerState.collectAsState()
     val whereFrom = rememberSaveable { mutableStateOf( "" ) }
     val where = remember { mutableStateOf( "" ) }
 
@@ -160,12 +162,7 @@ fun AirScreenContent(onClickWereSearch:()->Unit) {
             .fillMaxWidth()
             .wrapContentSize()
         ){
-            items(listOf(
-                Offer(R.drawable.image1, "от 5000 ₽", "Die Antwoord", "Будапешт"),
-                Offer(R.drawable.image2, "от 1999 ₽", "Socrat&Lera", "Санкт-Петербур"),
-                Offer(R.drawable.image3, "от 2390 ₽", "Лампабикт", "Москва")
-
-            )){ data->
+            items(offerState.value){ data->
                 ItemList(data)
             }
         }

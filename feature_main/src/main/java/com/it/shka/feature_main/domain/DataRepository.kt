@@ -1,5 +1,7 @@
 package com.it.shka.feature_main.domain
 
+import com.it.shka.feature_main.model.Offer
+
 interface DataRepository {
-    suspend fun getData()
+    suspend fun getOffer(): List<Offer>
 }

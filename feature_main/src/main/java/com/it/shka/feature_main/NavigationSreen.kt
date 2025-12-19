@@ -32,31 +32,40 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 import com.it.shka.feature_main.model.Offer
 import com.it.shka.feature_main.presentation.DataViewModel
 
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun ItemList(item:Offer){
     Column (
         modifier = Modifier
             .padding(16.dp)
     ){ //
-            Image(
-                modifier = Modifier
-                    .size(width = 133.dp, height = 134.dp)
-                    .padding(5.dp)
-                    .background(color = Color.Transparent, shape = RoundedCornerShape(16.dp)),
-                painter = painterResource(item.id),
-                contentDescription = "картинка"
-            )
+        GlideImage(
+            modifier = Modifier
+                .size(width = 133.dp, height = 134.dp)
+                .padding(5.dp)
+                .clip(RoundedCornerShape(16.dp)),
+            loading = placeholder(painterResource(R.drawable.fire_icon)),
+            contentScale = ContentScale.Fit,
+            model = item.image,
+            contentDescription = "картинка"
+        )
+
         Text(
             modifier = Modifier
                 .padding(start = 5.dp, top = 5.dp),
@@ -83,7 +92,7 @@ fun ItemList(item:Offer){
             )
             Text(modifier = Modifier
                 .align(Alignment.CenterVertically),
-                text = item.price ,
+                text = item.price.value.toString() ,
                 color = Color.White,
                 fontSize = 14.sp
             )
