@@ -42,15 +42,12 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":feature_main"))
     implementation (libs.retrofit2.retrofit)
     implementation (libs.converter.gson)
-
     implementation (libs.insert.koin.koin.android)
     implementation (libs.koin.androidx.compose)
-
     implementation (libs.glide.compose)
-
-
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

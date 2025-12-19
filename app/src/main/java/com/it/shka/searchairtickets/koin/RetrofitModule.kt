@@ -1,7 +1,7 @@
 package com.it.shka.searchairtickets.koin
 
-import com.it.shka.data.repository.ImplDataRepository
-import com.it.shka.data.retrofit.ApiService
+import com.it.shka.feature_main.data.ImplDataRepository
+import com.it.shka.feature_main.data.retrofit.ApiService
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
