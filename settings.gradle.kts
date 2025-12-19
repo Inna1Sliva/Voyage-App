@@ -21,5 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Search Air Tickets"
 include(":app")
-include(":data")
 include(":feature_main")

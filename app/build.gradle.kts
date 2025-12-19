@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
     implementation(project(":feature_main"))
     implementation (libs.retrofit2.retrofit)
     implementation (libs.converter.gson)
