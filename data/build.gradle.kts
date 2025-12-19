@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation (libs.retrofit2.retrofit)
     implementation (libs.converter.gson)
     implementation(libs.androidx.core.ktx)

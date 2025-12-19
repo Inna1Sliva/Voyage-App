@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":feature_main"))
     implementation (libs.retrofit2.retrofit)
