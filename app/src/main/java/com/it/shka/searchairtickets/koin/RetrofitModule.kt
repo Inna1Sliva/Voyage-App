@@ -12,7 +12,7 @@ single { ImplDataRepository(providesApiService(providesRetrofit())) }
 }
 fun providesRetrofit():Retrofit{
     return Retrofit.Builder()
-        .baseUrl("http://192.168.42.242:3700")
+        .baseUrl("http://10.94.166.193:3700")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
