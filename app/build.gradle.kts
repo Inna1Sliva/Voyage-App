@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation(project(":feature_main"))
+    implementation(project(":core"))
     implementation (libs.retrofit2.retrofit)
     implementation (libs.converter.gson)
     implementation(libs.retrofit2.kotlin.coroutines.adapter)

@@ -1,13 +1,13 @@
-package com.it.shka.feature_main.data
+package com.it.shka.feature_main.data.repository
 
 import com.it.shka.feature_main.data.retrofit.ApiService
 import com.it.shka.feature_main.domain.DataRepository
-import com.it.shka.feature_main.model.Offer
-import kotlinx.coroutines.Dispatchers.IO
+import com.it.shka.feature_main.domain.model.Offer
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ImplDataRepository(private val apiService: ApiService): DataRepository {
     override suspend fun getOffer(): List<Offer> {
-       return withContext(IO){ apiService.getOffer()}
+       return withContext(Dispatchers.IO) { apiService.getOffer() }
     }
 }

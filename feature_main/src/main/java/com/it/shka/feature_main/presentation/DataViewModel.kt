@@ -2,14 +2,14 @@ package com.it.shka.feature_main.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.it.shka.feature_main.data.ImplDataRepository
-import com.it.shka.feature_main.model.Offer
+import com.it.shka.feature_main.domain.DataRepository
+import com.it.shka.feature_main.domain.model.Offer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class DataViewModel(private val repository: ImplDataRepository): ViewModel() {
+class DataViewModel(private val dataRepository: DataRepository): ViewModel() {
     private val _searchState = MutableStateFlow(SearchState())
     val whereFromState: StateFlow<SearchState> get() = _searchState
     private val _offerState = MutableStateFlow<List<Offer>>(emptyList())
@@ -33,7 +33,7 @@ init {
     fun getOffer(){
         viewModelScope.launch {
             try {
-                _offerState.value = repository.getOffer()
+                _offerState.value = dataRepository.getOffer()
             } catch (e: Exception){
                 println(e)
 

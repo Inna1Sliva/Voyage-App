@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.it.shka.feature_main.ItemList
 import com.it.shka.feature_main.R
-import com.it.shka.feature_main.model.Offer
 import com.it.shka.feature_main.presentation.DataViewModel
 import org.koin.androidx.compose.koinViewModel
 
