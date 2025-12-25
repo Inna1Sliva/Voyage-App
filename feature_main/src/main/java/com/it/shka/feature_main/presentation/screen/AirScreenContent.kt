@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -25,6 +26,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,6 +34,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -41,12 +44,22 @@ import androidx.compose.ui.unit.sp
 import com.it.shka.feature_main.ItemList
 import com.it.shka.feature_main.R
 import com.it.shka.feature_main.presentation.DataViewModel
+import com.it.shka.feature_main.presentation.animation.ShimmerPlaceholder
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AirScreenContent(onClickWereSearch:()->Unit) {
     val vm: DataViewModel = koinViewModel()
+    val offerState = vm.offerState.collectAsState()
+    when{
+        offerState.value.isEmpty() -> {LoaderContent()}
+        offerState.value.isNotEmpty() -> { AirScreen(vm,onClickWereSearch = onClickWereSearch)}
+        else->{}
+    }
+}
+@Composable
+fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit){
     val offerState = vm.offerState.collectAsState()
     val whereFrom = rememberSaveable { mutableStateOf( "" ) }
     val where = remember { mutableStateOf( "" ) }
@@ -57,7 +70,7 @@ fun AirScreenContent(onClickWereSearch:()->Unit) {
             .background(Color.Black)
             .verticalScroll(state = rememberScrollState())
     ) {
-        // Text on the screen
+
         Text(text = stringResource(R.string.title_main_screen),
             color = Color.White,
             fontSize = 22.sp,
@@ -186,5 +199,98 @@ fun AirScreenContent(onClickWereSearch:()->Unit) {
             )
         }
     }
+}
+@Composable
+fun LoaderContent(){
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+            .verticalScroll(state = rememberScrollState())
+    ) {
+        Text(text = stringResource(R.string.title_main_screen),
+            color = Color.White,
+            fontSize = 22.sp,
+            modifier = Modifier
+                .padding(60.dp)
+                .fillMaxWidth(),
+            textAlign = TextAlign.Center
+        )
 
+        Box (modifier = Modifier
+            .padding(16.dp)
+            .wrapContentSize()
+            .fillMaxWidth()
+            .background(colorResource(R.color.back_search1), shape = RoundedCornerShape(16.dp)),
+            Alignment.Center
+        ){
+            Row(modifier = Modifier
+                .wrapContentSize()
+                .fillMaxWidth()
+                .padding(16.dp)
+                .background(colorResource(R.color.back_search2), shape = RoundedCornerShape(16.dp)),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                ShimmerPlaceholder(
+                    modifier = Modifier
+                        .padding(start = 10.dp,5.dp)
+                        .size(width = 24.dp, height = 24.dp),
+                    shape = RoundedCornerShape(8.dp)
+                )
+
+                Column (
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .padding(5.dp)
+
+                ){
+                    ShimmerPlaceholder(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(100.dp),
+                        shape = RoundedCornerShape(16.dp)
+                    )
+                }
+            }
+        }
+        ShimmerPlaceholder(
+            modifier = Modifier
+                .padding(15.dp)
+                .width(120.dp)
+                .height(16.dp),
+            shape = RectangleShape
+        )
+
+       Row(
+           modifier = Modifier
+               .fillMaxWidth()
+       ) {
+           ShimmerPlaceholder(
+               modifier = Modifier
+                   .size(width = 150.dp, height = 150.dp)
+                   .padding(5.dp),
+               shape = RoundedCornerShape(16.dp)
+           )
+           ShimmerPlaceholder(
+               modifier = Modifier
+                   .size(width = 150.dp, height = 150.dp)
+                   .padding(5.dp),
+               shape = RoundedCornerShape(16.dp)
+           )
+           ShimmerPlaceholder(
+               modifier = Modifier
+                   .size(width = 150.dp, height = 150.dp)
+                   .padding(5.dp),
+               shape = RoundedCornerShape(16.dp)
+           )
+       }
+        ShimmerPlaceholder(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(16.dp)
+                .padding(16.dp),
+            shape = RoundedCornerShape(8.dp)
+        )
+
+    }
 }
