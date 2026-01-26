@@ -1,4 +1,4 @@
-package com.it.shka.core.module
+package com.it.shka.searchairtickets.koin.module
 
 import com.it.shka.feature_main.data.retrofit.ApiService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

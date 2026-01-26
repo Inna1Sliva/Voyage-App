@@ -1,4 +1,4 @@
-package com.it.shka.core.module
+package com.it.shka.searchairtickets.koin.module
 
 import com.it.shka.feature_main.data.repository.ImplDataRepository
 import com.it.shka.feature_main.domain.DataRepository

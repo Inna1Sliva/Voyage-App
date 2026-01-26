@@ -1,4 +1,4 @@
-package com.it.shka.feature_main.presentation.navigation.navBottom.bottom
+package com.example.feature_bottomnav.presentation.view
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -12,29 +12,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.it.shka.feature_main.presentation.navigation.navBottom.item.BottomItem
+import com.example.feature_bottomnav.presentation.state.BottomItemUiState
 
 @Composable
 fun NavigationBottom(
-navController: NavHostController
+navHostNavAppController: NavHostController
 ){
-val listItem = listOf(
-    BottomItem.Screen1,
-    BottomItem.Screen2,
-    BottomItem.Screen3,
-    BottomItem.Screen4,
-    BottomItem.Screen5
-)
+
 NavigationBar(
     containerColor = Color.Black
 ) {
-    val backStackEntry by navController.currentBackStackEntryAsState()
+    val backStackEntry by navHostNavAppController.currentBackStackEntryAsState()
       val currentRout = backStackEntry?.destination?.route
-      listItem.forEach { navItem->
+      BottomNavItem().forEach { navItem->
         NavigationBarItem(
             selected = currentRout == navItem.route,
             onClick = {
-                navController.navigate(navItem.route)
+                navHostNavAppController.navigate(navItem.route)
             },
             icon = {
                 Icon( painter = painterResource(navItem.icon) , contentDescription = navItem.title)
@@ -56,3 +50,10 @@ NavigationBar(
       }
     }
 }
+fun BottomNavItem()= listOf(
+    BottomItemUiState.Screen1,
+    BottomItemUiState.Screen2,
+    BottomItemUiState.Screen3,
+    BottomItemUiState.Screen4,
+    BottomItemUiState.Screen5
+)

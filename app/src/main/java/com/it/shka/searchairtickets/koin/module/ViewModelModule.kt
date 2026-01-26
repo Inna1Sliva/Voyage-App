@@ -1,4 +1,4 @@
-package com.it.shka.core.module
+package com.it.shka.searchairtickets.koin.module
 
 
 

@@ -23,3 +23,4 @@ rootProject.name = "Search Air Tickets"
 include(":app")
 include(":feature_main")
 include(":core")
+include(":feature_bottomNav")
