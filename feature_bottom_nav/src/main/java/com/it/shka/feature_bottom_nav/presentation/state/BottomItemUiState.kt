@@ -1,7 +1,7 @@
-package com.example.feature_bottomnav.presentation.state
+package com.it.shka.feature_bottom_nav.presentation.state
 
 import com.example.feature_bottomnav.R
-import com.example.feature_bottomnav.presentation.event.BottomNavUiEvent
+import com.it.shka.feature_bottom_nav.presentation.event.BottomNavUiEvent
 
 sealed class BottomItemUiState(val title: String, val icon: Int, val route: String) {
     object Screen1 : BottomItemUiState( "Авиабилеты", R.drawable.airport, BottomNavUiEvent.AirScreen.route)

@@ -1,4 +1,4 @@
-package com.example.feature_bottomnav.presentation.view
+package com.it.shka.feature_bottom_nav.presentation.view
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -12,7 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.feature_bottomnav.presentation.state.BottomItemUiState
+import com.it.shka.feature_bottom_nav.presentation.state.BottomItemUiState
 
 @Composable
 fun NavigationBottom(

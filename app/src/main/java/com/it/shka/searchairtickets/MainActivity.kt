@@ -1,7 +1,6 @@
 package com.it.shka.searchairtickets
 
 import android.os.Bundle
-
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -15,11 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.feature_bottomnav.presentation.view.NavigationBottom
 import com.it.shka.feature_main.R
-import com.it.shka.feature_main.presentation.BottomSheetScaffoldContent
 import com.it.shka.searchairtickets.navigation.NavHostNavAppController
-import kotlinx.coroutines.launch
 
 class MainActivity() : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +31,7 @@ class MainActivity() : ComponentActivity() {
                 scaffoldState = bottomSheetState,
                 sheetPeekHeight = 0.dp,
                 sheetShape = BottomSheetDefaults.ExpandedShape,
-                sheetContentColor = colorResource(com.it.shka.feature_main.R.color.back_search3),
+                sheetContentColor = colorResource(R.color.back_search3),
                 sheetContainerColor = colorResource(R.color.back_search3),
                 sheetContent = {}//BottomSheetScaffoldContent(viewModel = dataViewModel)}
             ){

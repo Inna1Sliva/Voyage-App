@@ -1,4 +1,4 @@
-package com.example.feature_bottomnav.presentation.event
+package com.it.shka.feature_bottom_nav.presentation.event
 
 sealed class BottomNavUiEvent(val route: String) {
     object AirScreen: BottomNavUiEvent("AirScreen")
