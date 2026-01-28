@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -30,10 +31,20 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
-
+    api(libs.androidx.lifecycle.runtime.ktx)
+    api(libs.androidx.ui.graphics)
+    api(libs.androidx.ui)
+    api(libs.androidx.navigation.runtime.android)
+    api(libs.androidx.activity.compose)
+    api(libs.androidx.navigation.compose)
+    api(platform(libs.androidx.compose.bom))
+    api(libs.androidx.material3)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

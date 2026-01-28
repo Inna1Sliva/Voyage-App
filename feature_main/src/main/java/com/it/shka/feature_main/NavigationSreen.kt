@@ -92,20 +92,7 @@ fun HotelScreen() {
     }
 }
 
-@Composable
-fun LocalScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
 
-        // Text on the screen
-        Text(text = "Local", color = Color.Black)
-    }
-}
 
 @Composable
 fun NatificationScreen() {
@@ -122,17 +109,3 @@ fun NatificationScreen() {
     }
 }
 
-@Composable
-fun ProfileScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-
-        // Text on the screen
-        Text(text = "Profile", color = Color.Black)
-    }
-}

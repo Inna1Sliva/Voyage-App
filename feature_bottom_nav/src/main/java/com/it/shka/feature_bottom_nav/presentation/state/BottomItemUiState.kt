@@ -1,6 +1,6 @@
 package com.it.shka.feature_bottom_nav.presentation.state
 
-import com.example.feature_bottomnav.R
+import com.it.shka.feature_bottom_nav.R
 import com.it.shka.feature_bottom_nav.presentation.event.BottomNavUiEvent
 
 sealed class BottomItemUiState(val title: String, val icon: Int, val route: String) {

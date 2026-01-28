@@ -2,7 +2,7 @@ package com.it.shka.feature_main.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.it.shka.feature_main.domain.DataRepository
+import com.it.shka.feature_main.domain.repository.DataRepository
 import com.it.shka.feature_main.domain.model.Offer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

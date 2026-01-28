@@ -41,7 +41,10 @@ android {
 
 dependencies {
     implementation(project(":feature_main"))
+    implementation(project(":feature_local"))
+    implementation(project(":feature_profile"))
     implementation(project(":feature_bottom_nav"))
+    implementation(project(":feature_bottom_sheet"))
     implementation(project(":core"))
     implementation (libs.retrofit2.retrofit)
     implementation (libs.converter.gson)

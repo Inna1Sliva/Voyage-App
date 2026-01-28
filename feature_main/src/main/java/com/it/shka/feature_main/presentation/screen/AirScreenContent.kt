@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -49,23 +50,24 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AirScreenContent(onClickWereSearch:()->Unit) {
+fun AirScreenContent(padding: PaddingValues,onClickWereSearch:()->Unit) {
     val vm: DataViewModel = koinViewModel()
     val offerState = vm.offerState.collectAsState()
     when{
         offerState.value.isEmpty() -> {LoaderContent()}
-        offerState.value.isNotEmpty() -> { AirScreen(vm,onClickWereSearch = onClickWereSearch)}
+        offerState.value.isNotEmpty() -> { AirScreen(vm,onClickWereSearch = onClickWereSearch, padding)}
         else->{}
     }
 }
 @Composable
-fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit){
+fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingValues){
     val offerState = vm.offerState.collectAsState()
     val whereFrom = rememberSaveable { mutableStateOf( "" ) }
     val where = remember { mutableStateOf( "" ) }
 
     Column(
         modifier = Modifier
+            .padding(paddingValues = padding)
             .fillMaxSize()
             .background(Color.Black)
             .verticalScroll(state = rememberScrollState())

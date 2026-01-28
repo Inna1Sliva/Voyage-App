@@ -1,4 +1,4 @@
-package com.it.shka.feature_main.domain
+package com.it.shka.feature_main.domain.repository
 
 import com.it.shka.feature_main.domain.model.Offer
 
