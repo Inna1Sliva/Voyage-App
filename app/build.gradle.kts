@@ -41,7 +41,9 @@ android {
 
 dependencies {
     implementation(project(":feature_main"))
+    implementation(project(":feature_hotel"))
     implementation(project(":feature_local"))
+    implementation(project(":feature_natification"))
     implementation(project(":feature_profile"))
     implementation(project(":feature_bottom_nav"))
     implementation(project(":feature_bottom_sheet"))

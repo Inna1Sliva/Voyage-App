@@ -77,35 +77,9 @@ fun ItemList(item:Offer){
 
     }
 }
-@Composable
-fun HotelScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-
-        // Text on the screen
-        Text(text = "Hotel", color = Color.Black)
-    }
-}
 
 
 
-@Composable
-fun NatificationScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
 
-        // Text on the screen
-        Text(text = "Natification", color = Color.Black)
-    }
-}
+
 

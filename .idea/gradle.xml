@@ -14,8 +14,10 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/feature_bottom_nav" />
             <option value="$PROJECT_DIR$/feature_bottom_sheet" />
+            <option value="$PROJECT_DIR$/feature_hotel" />
             <option value="$PROJECT_DIR$/feature_local" />
             <option value="$PROJECT_DIR$/feature_main" />
+            <option value="$PROJECT_DIR$/feature_natification" />
             <option value="$PROJECT_DIR$/feature_profile" />
           </set>
         </option>
