@@ -78,7 +78,7 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
             fontSize = 22.sp,
             modifier = Modifier
                 .padding(60.dp)
-                .fillMaxWidth(),
+                .wrapContentSize(),
             textAlign = TextAlign.Center
         )
         Box (modifier = Modifier

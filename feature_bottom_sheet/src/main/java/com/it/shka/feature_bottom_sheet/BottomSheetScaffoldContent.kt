@@ -20,9 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.AbsoluteAlignment
@@ -85,7 +82,7 @@ fun SearchBottomSheet(){//vm: DataViewModel
             .fillMaxWidth()
             .padding(10.dp)
             .background(
-                color = colorResource(R.color.back_search1),
+                color = colorResource(R.color.color_back_search1),
                 shape = RoundedCornerShape(16.dp)
             )
     ) {
@@ -107,9 +104,9 @@ fun SearchBottomSheet(){//vm: DataViewModel
                         modifier = Modifier
                             .padding(end = 10.dp)
                             .size(width = 28.dp, height = 28.dp),
-                        painter = painterResource(R.drawable.air),
+                        painter = painterResource(R.drawable.icon_air),
                         contentDescription = "aire",
-                        tint = colorResource(R.color.back_search2)
+                        tint = colorResource(R.color.color_back_search2)
                     )
                 },
                 colors = TextFieldDefaults.colors(
@@ -123,8 +120,8 @@ fun SearchBottomSheet(){//vm: DataViewModel
                 placeholder = {
                     Text(
                         fontSize = 16.sp,
-                        color = colorResource(R.color.Basic_Grey_6),
-                        text = stringResource(R.string.placeholder_where_from)
+                        color = colorResource(R.color.color_basic_grey_6),
+                        text = "Минск"
                     )
                 },
                 value = textWhere.value,
@@ -135,7 +132,7 @@ fun SearchBottomSheet(){//vm: DataViewModel
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(1.dp)
-                    .background(colorResource(R.color.Basic_Grey5))
+                    .background(colorResource(R.color.color_basic_grey5))
             )
 
             TextField(
@@ -157,9 +154,9 @@ fun SearchBottomSheet(){//vm: DataViewModel
                         modifier = Modifier
                             .padding(10.dp)
                             .size(width = 24.dp, height = 24.dp),
-                        painter = painterResource(R.drawable.icon_search),
+                        painter = painterResource(R.drawable.search),
                         contentDescription = "icon search",
-                        tint = colorResource(R.color.back_search2)
+                        tint = colorResource(R.color.color_back_search2)
                     )
                 },
                 trailingIcon = {
@@ -170,7 +167,7 @@ fun SearchBottomSheet(){//vm: DataViewModel
                                     .size(width = 24.dp, height = 24.dp),
                                 painter = painterResource(R.drawable.close),
                                 contentDescription = "icon  delete text",
-                                tint = colorResource(R.color.back_search2)
+                                tint = colorResource(R.color.color_back_search2)
                             )
                         }
                     }
@@ -179,8 +176,8 @@ fun SearchBottomSheet(){//vm: DataViewModel
                 placeholder = {
                     Text(
                         fontSize = 16.sp,
-                        color = colorResource(R.color.Basic_Grey_6),
-                        text = stringResource(R.string.placeholder_Where)
+                        color = colorResource(R.color.color_basic_grey_6),
+                        text = "Куда - Турция"
                     )
                 },
                 value = text.value,
@@ -211,7 +208,7 @@ fun ButtonNavigationBottomSheet(){//vm: DataViewModel
                     .padding(5.dp)
                     .size(width = 60.dp, height = 60.dp)
                     .background(
-                        colorResource(R.color.Green_1),
+                        colorResource(R.color.color_green_1),
                         shape = RoundedCornerShape(10.dp)
                     ),
 
@@ -247,7 +244,7 @@ fun ButtonNavigationBottomSheet(){//vm: DataViewModel
                 modifier = Modifier
                     .padding(5.dp)
                     .size(width = 60.dp, height = 60.dp)
-                    .background(colorResource(R.color.Blue), shape = RoundedCornerShape(10.dp)),
+                    .background(colorResource(R.color.color_blue), shape = RoundedCornerShape(10.dp)),
 
                 ) {
                 Icon(
@@ -281,7 +278,7 @@ fun ButtonNavigationBottomSheet(){//vm: DataViewModel
                     .padding(5.dp)
                     .size(width = 60.dp, height = 60.dp)
                     .background(
-                        colorResource(R.color.Blue_grey),
+                        colorResource(R.color.color_blue_grey),
                         shape = RoundedCornerShape(10.dp)
                     )
             ) {
@@ -316,7 +313,7 @@ fun ButtonNavigationBottomSheet(){//vm: DataViewModel
                     .padding(5.dp)
                     .size(width = 60.dp, height = 60.dp)
                     .background(
-                        colorResource(R.color.Red_orange),
+                        colorResource(R.color.color_red_orange),
                         shape = RoundedCornerShape(10.dp)
                     ),
 
@@ -325,7 +322,7 @@ fun ButtonNavigationBottomSheet(){//vm: DataViewModel
                     modifier = Modifier
                         .size(width = 28.dp, height = 28.dp)
                         .align(Alignment.Center),
-                    painter = painterResource(R.drawable.fire_icon),
+                    painter = painterResource(R.drawable.icon_fire),
                     contentDescription = "",
                     tint = Color.White
                 )
@@ -350,7 +347,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
             .fillMaxWidth()
             .padding(10.dp)
             .background(
-                color = colorResource(R.color.back_search1),
+                color = colorResource(R.color.color_back_search1),
                 shape = RoundedCornerShape(16.dp)
             )
     ) {
@@ -389,7 +386,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                     Text(
                         text = stringResource(R.string.title),
                         fontSize = 14.sp,
-                        color = colorResource(R.color.Basic_Grey5),
+                        color = colorResource(R.color.color_basic_grey5),
                         fontWeight = FontWeight.Light
                     )
                 }
@@ -400,7 +397,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                     .fillMaxWidth()
                     .padding(top = 10.dp)
                     .height(1.dp)
-                    .background(color = colorResource(R.color.Basic_Grey5))
+                    .background(color = colorResource(R.color.color_basic_grey5))
             )
             Column(
                 modifier = Modifier
@@ -436,7 +433,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                         Text(
                             text = stringResource(R.string.title),
                             fontSize = 14.sp,
-                            color = colorResource(R.color.Basic_Grey5),
+                            color = colorResource(R.color.color_basic_grey5),
                             fontWeight = FontWeight.Light
                         )
                     }
@@ -447,7 +444,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                         .fillMaxWidth()
                         .padding(top = 10.dp)
                         .height(1.dp)
-                        .background(color = colorResource(R.color.Basic_Grey5))
+                        .background(color = colorResource(R.color.color_basic_grey5))
                 )
             }
             Column(
@@ -484,7 +481,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                         Text(
                             text = stringResource(R.string.title),
                             fontSize = 14.sp,
-                            color = colorResource(R.color.Basic_Grey5),
+                            color = colorResource(R.color.color_basic_grey5),
                             fontWeight = FontWeight.Light
                         )
                     }
@@ -495,7 +492,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                         .fillMaxWidth()
                         .padding(top = 10.dp)
                         .height(1.dp)
-                        .background(color = colorResource(R.color.Basic_Grey5))
+                        .background(color = colorResource(R.color.color_basic_grey5))
                 )
             }
         }

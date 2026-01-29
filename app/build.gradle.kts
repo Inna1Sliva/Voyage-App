@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+  //  id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -47,7 +49,10 @@ dependencies {
     implementation(project(":feature_profile"))
     implementation(project(":feature_bottom_nav"))
     implementation(project(":feature_bottom_sheet"))
-    implementation(project(":core"))
+   // ksp(libs.androidx.room.compiler.v284)
+   // implementation (libs.androidx.room.runtime)
+    //annotationProcessor (libs.androidx.room.compiler )
+//implementation (libs.androidx.room.ktx)
     implementation (libs.retrofit2.retrofit)
     implementation (libs.converter.gson)
     implementation(libs.retrofit2.kotlin.coroutines.adapter)

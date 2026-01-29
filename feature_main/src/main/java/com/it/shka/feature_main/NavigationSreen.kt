@@ -38,7 +38,7 @@ fun ItemList(item:Offer){
                 .padding(5.dp)
                 .clip(RoundedCornerShape(16.dp)),
             loading = placeholder(painterResource(R.drawable.fire_icon)),
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.FillBounds,
             model = item.image,
             contentDescription = "картинка"
         )

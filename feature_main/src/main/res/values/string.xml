@@ -2,7 +2,7 @@
 <resources>
 <string name="Fly_away_musically">Музыкально отлететь</string>
     <string name="title_button">Показать все места</string>
-    <string name="title_main_screen">Поиск дешевых  авиабилетов</string>
+    <string name="title_main_screen">Поиск дешевых авиабилетов</string>
     <string name="placeholder_where_from">Минск</string>
     <string name="placeholder_Where">Куда - Турция</string>
 </resources>

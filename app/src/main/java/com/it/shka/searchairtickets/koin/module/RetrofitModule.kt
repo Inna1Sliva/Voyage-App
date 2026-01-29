@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val RetrofitModule = module{
 single<Retrofit> {
     Retrofit.Builder()
-    .baseUrl("http://192.168.42.242:3700")
+    .baseUrl("http://10.184.87.180:3700")
     .addConverterFactory(GsonConverterFactory.create())
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .build()

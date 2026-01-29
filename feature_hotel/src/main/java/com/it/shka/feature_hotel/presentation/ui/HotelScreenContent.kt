@@ -1,4 +1,4 @@
-package com.it.shka.feature_hotel.presentation
+package com.it.shka.feature_hotel.presentation.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

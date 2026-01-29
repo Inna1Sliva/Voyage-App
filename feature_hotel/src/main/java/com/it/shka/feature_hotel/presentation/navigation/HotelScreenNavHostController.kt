@@ -5,9 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.it.shka.feature_hotel.presentation.HotelScreenContent
-import com.it.shka.feature_hotel.presentation.HotelScreenUiEvent
-import com.it.shka.feature_hotel.presentation.HotelScreenUiState
+import com.it.shka.feature_hotel.presentation.ui.HotelScreenContent
+import com.it.shka.feature_hotel.presentation.navigation.event.HotelScreenUiEvent
+import com.it.shka.feature_hotel.presentation.navigation.state.HotelScreenUiState
 
 @Composable
 fun HotelScreenNavHostController(paddingValues: PaddingValues){

@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.time.delay
 
 class DataViewModel(private val dataRepository: DataRepository): ViewModel() {
     private val _searchState = MutableStateFlow(SearchState())
@@ -32,6 +33,7 @@ init {
     }
     fun getOffer(){
         viewModelScope.launch {
+
             try {
                 _offerState.value = dataRepository.getOffer()
             } catch (e: Exception){
