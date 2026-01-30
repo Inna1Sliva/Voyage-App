@@ -10,9 +10,14 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -30,37 +35,40 @@ class MainActivity() : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          enableEdgeToEdge()
-
         setContent {
+            var stateTheme by rememberSaveable { mutableStateOf(false) }
+            SearchAirTicketsTheme(stateTheme) {
 
-                val navHostNavAppController = rememberNavController()
-                val bottomSheetState = rememberBottomSheetScaffoldState()
-                val scope = rememberCoroutineScope()
-                BottomSheetScaffold(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    scaffoldState = bottomSheetState,
-                    sheetPeekHeight = 0.dp,
-                    sheetShape = BottomSheetDefaults.ExpandedShape,
-                    sheetContentColor = colorResource(R.color.back_search3),
-                    sheetContainerColor = colorResource(R.color.back_search3),
-                    sheetContent = {BottomSheetScaffoldContent()}
-                ){
-                    Scaffold (
-                        bottomBar = {
-                            NavigationBottom(navHostNavAppController)
-                        },
-                        containerColor =colorResource(R.color.back_search3),
+                    val navHostNavAppController = rememberNavController()
+                    val bottomSheetState = rememberBottomSheetScaffoldState()
+                    val scope = rememberCoroutineScope()
+                    BottomSheetScaffold(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        scaffoldState = bottomSheetState,
+                        sheetPeekHeight = 0.dp,
+                        sheetShape = BottomSheetDefaults.ExpandedShape,
+                        sheetContentColor = colorResource(R.color.back_search3),
+                        sheetContainerColor = colorResource(R.color.back_search3),
+                        sheetContent = {BottomSheetScaffoldContent()}
+                    ){
+                        Scaffold (
+                            bottomBar = {
+                                NavigationBottom(navHostNavAppController)
+                            },
+                            containerColor = MaterialTheme.colorScheme.background,//colorResource(R.color.back_search3),
+                            content = {padding ->
+                                NavHostNavAppController(navHostNavAppController, paddingValues = padding, onClickWereSearch = {
+                                    stateTheme =true
 
-                        content = {padding ->
-                            NavHostNavAppController(navHostNavAppController, paddingValues = padding, onClickWereSearch = {
-                                scope.launch {
-                                    bottomSheetState.bottomSheetState.expand()
-                                }
-                            })
-                        }
-                    )
-                }
+                                    //  scope.launch {
+                                    //    bottomSheetState.bottomSheetState.expand()
+                                    //  }
+                                })
+                            }
+                        )
+                    }
+            }
         }
     }
 }

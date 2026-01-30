@@ -2,6 +2,7 @@ package com.it.shka.feature_bottom_nav.presentation.view
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -23,7 +24,7 @@ navHostNavAppController: NavHostController
 ){
 
 NavigationBar(
-    containerColor = Color.Black
+    containerColor = MaterialTheme.colorScheme.background
 ) {
     val backStackEntry by navHostNavAppController.currentBackStackEntryAsState()
       val currentRout = backStackEntry?.destination?.route
@@ -50,10 +51,10 @@ NavigationBar(
                     },
             alwaysShowLabel = true,
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.Blue,
+                selectedIconColor = MaterialTheme.colorScheme.primary,
                 unselectedIconColor = Color.Gray,
-                selectedTextColor = Color.Blue,
-                indicatorColor = Color.Transparent
+                selectedTextColor =MaterialTheme.colorScheme.primary,
+                indicatorColor = MaterialTheme.colorScheme.background
             )
         )
       }

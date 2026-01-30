@@ -23,6 +23,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -69,12 +70,12 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
         modifier = Modifier
             .padding(paddingValues = padding)
             .fillMaxSize()
-            .background(Color.Black)
+            .background(MaterialTheme.colorScheme.background)
             .verticalScroll(state = rememberScrollState())
     ) {
 
         Text(text = stringResource(R.string.title_main_screen),
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onBackground,
             fontSize = 22.sp,
             modifier = Modifier
                 .padding(60.dp)
