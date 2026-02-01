@@ -33,9 +33,7 @@ NavigationBar(
             selected = currentRout == navItem.route,
             onClick = {
                 navHostNavAppController.navigate(navItem.route)
-
-
-            },
+                      },
             icon = {
                 Icon(
                     modifier = Modifier

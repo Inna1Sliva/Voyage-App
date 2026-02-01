@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core_database" />
             <option value="$PROJECT_DIR$/feature_bottom_nav" />
             <option value="$PROJECT_DIR$/feature_bottom_sheet" />
             <option value="$PROJECT_DIR$/feature_hotel" />

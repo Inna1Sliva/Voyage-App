@@ -1,4 +1,4 @@
-package com.it.shka.feature_main.data.retrofit
+package com.it.shka.feature_main.data.network
 
 import com.it.shka.feature_main.domain.model.Offer
 import retrofit2.http.GET

@@ -2,15 +2,18 @@ package com.it.shka.feature_main.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.it.shka.feature_main.domain.repository.DataRepository
+import com.it.shka.feature_main.domain.repository.RemoteDataSourceRepository
 import com.it.shka.feature_main.domain.model.Offer
+import com.it.shka.feature_main.domain.repository.LocalDataSourceUseCase
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.time.delay
 
-class DataViewModel(private val dataRepository: DataRepository): ViewModel() {
+class DataViewModel(private val dataRepository: RemoteDataSourceRepository,
+     private val local: LocalDataSourceUseCase
+): ViewModel() {
     private val _searchState = MutableStateFlow(SearchState())
     val whereFromState: StateFlow<SearchState> get() = _searchState
     private val _offerState = MutableStateFlow<List<Offer>>(emptyList())
@@ -42,5 +45,10 @@ init {
             }
         }
 
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelScope.cancel()
     }
 }

@@ -28,7 +28,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,20 +50,27 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AirScreenContent(padding: PaddingValues,onClickWereSearch:()->Unit) {
+fun AirScreenContent(padding: PaddingValues, onClickWereSearch: () -> Unit) {
     val vm: DataViewModel = koinViewModel()
     val offerState = vm.offerState.collectAsState()
-    when{
-        offerState.value.isEmpty() -> {LoaderContent()}
-        offerState.value.isNotEmpty() -> { AirScreen(vm,onClickWereSearch = onClickWereSearch, padding)}
-        else->{}
+    when {
+        offerState.value.isEmpty() -> {
+            LoaderContent()
+        }
+
+        offerState.value.isNotEmpty() -> {
+            AirScreen(vm, onClickWereSearch = onClickWereSearch, padding)
+        }
+
+        else -> {}
     }
 }
+
 @Composable
-fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingValues){
+fun AirScreen(vm: DataViewModel, onClickWereSearch: () -> Unit, padding: PaddingValues) {
     val offerState = vm.offerState.collectAsState()
-    val whereFrom = rememberSaveable { mutableStateOf( "" ) }
-    val where = remember { mutableStateOf( "" ) }
+    val whereFrom = rememberSaveable { mutableStateOf("") }
+    val where = remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -74,7 +80,8 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
             .verticalScroll(state = rememberScrollState())
     ) {
 
-        Text(text = stringResource(R.string.title_main_screen),
+        Text(
+            text = stringResource(R.string.title_main_screen),
             color = MaterialTheme.colorScheme.onBackground,
             fontSize = 22.sp,
             modifier = Modifier
@@ -82,35 +89,42 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
                 .wrapContentSize(),
             textAlign = TextAlign.Center
         )
-        Box (modifier = Modifier
-            .padding(16.dp)
-            .wrapContentSize()
-            .fillMaxWidth()
-            .background(colorResource(R.color.back_search1), shape = RoundedCornerShape(16.dp)),
-            Alignment.Center
-        ){
-            Row(modifier = Modifier
+        Box(
+            modifier = Modifier
+                .padding(16.dp)
                 .wrapContentSize()
                 .fillMaxWidth()
-                .padding(16.dp)
-                .background(colorResource(R.color.back_search2), shape = RoundedCornerShape(16.dp)),
+                .background(colorResource(R.color.back_search1), shape = RoundedCornerShape(16.dp)),
+            Alignment.Center
+        ) {
+            Row(
+                modifier = Modifier
+                    .wrapContentSize()
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .background(
+                        colorResource(R.color.back_search2),
+                        shape = RoundedCornerShape(16.dp)
+                    ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(modifier = Modifier
-                    .padding(start = 10.dp,5.dp)
-                    .size(width = 24.dp, height = 24.dp),
+                Icon(
+                    modifier = Modifier
+                        .padding(start = 10.dp, 5.dp)
+                        .size(width = 24.dp, height = 24.dp),
                     tint = colorResource(R.color.back_search1),
                     painter = painterResource(R.drawable.icon_search),
-                    contentDescription = null,)
-                Column (
+                    contentDescription = null,
+                )
+                Column(
                     modifier = Modifier
                         .wrapContentSize()
                         .padding(5.dp)
 
-                ){
+                ) {
                     TextField(
                         colors = TextFieldDefaults.colors(
-                            focusedContainerColor = Color.Transparent ,
+                            focusedContainerColor = Color.Transparent,
                             unfocusedContainerColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent,
@@ -121,38 +135,45 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
                             Text(
                                 fontSize = 16.sp,
                                 color = colorResource(R.color.Basic_Grey_6),
-                                text= stringResource(R.string.placeholder_where_from))
+                                text = stringResource(R.string.placeholder_where_from)
+                            )
                         },
                         value = whereFrom.value,
-                        onValueChange = {whereFrom.value = it}
+                        onValueChange = { whereFrom.value = it }
                     )
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .padding(start = 16.dp, end = 16.dp)
-                        .background(colorResource(R.color.Basic_Grey5)))
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
+                            .padding(start = 16.dp, end = 16.dp)
+                            .background(colorResource(R.color.Basic_Grey5))
+                    )
 
-                    if (where.value.isEmpty()){
+                    if (where.value.isEmpty()) {
                         Text(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(16.dp)
-                                .clickable{
+                                .clickable {
                                     onClickWereSearch()
-                                    vm.setSearchWhereFrom(  whereFrom.value) },
+                                    vm.setSearchWhereFrom(whereFrom.value)
+                                },
                             text = stringResource(R.string.placeholder_Where),
                             fontSize = 16.sp,
                             color = colorResource(R.color.Basic_Grey_6)
                         )
-                    }else{
+                    } else {
                         TextField(
                             value = where.value,
-                            placeholder = {Text(
-                                fontSize = 16.sp,
-                                color = colorResource(R.color.Basic_Grey_6),
-                                text= stringResource(R.string.placeholder_Where))},
+                            placeholder = {
+                                Text(
+                                    fontSize = 16.sp,
+                                    color = colorResource(R.color.Basic_Grey_6),
+                                    text = stringResource(R.string.placeholder_Where)
+                                )
+                            },
                             colors = TextFieldDefaults.colors(
-                                focusedContainerColor = Color.Transparent ,
+                                focusedContainerColor = Color.Transparent,
                                 unfocusedContainerColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
                                 disabledIndicatorColor = Color.Transparent,
@@ -161,31 +182,37 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
                                 unfocusedTextColor = colorResource(R.color.Basic_Grey_6),
                                 focusedTextColor = Color.White
                             ),
-                            onValueChange = {where.value = it }
+                            onValueChange = { where.value = it }
                         )
                     }
                 }
             }
         }
-        Text(modifier = Modifier
-            .padding(15.dp),
+        Text(
+            modifier = Modifier
+                .padding(15.dp),
             text = stringResource(R.string.Fly_away_musically),
             color = Color.White,
             fontSize = 22.sp
         )
-        LazyRow (modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentSize()
-        ){
-            items(offerState.value){ data->
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize()
+        ) {
+            items(offerState.value) { data ->
                 ItemList(data)
             }
         }
-        Button(modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentSize()
-            .padding(16.dp)
-            .background(color = colorResource(R.color.Basic_Grey_3), shape = RoundedCornerShape(8.dp)),
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize()
+                .padding(16.dp)
+                .background(
+                    color = colorResource(R.color.Basic_Grey_3),
+                    shape = RoundedCornerShape(8.dp)
+                ),
             onClick = {},
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(R.color.Basic_Grey_3),
@@ -193,9 +220,10 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
             )
 
         ) {
-            Text(modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentSize(),
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentSize(),
                 text = stringResource(R.string.title_button),
                 color = Color.White,
                 fontSize = 16.sp
@@ -203,15 +231,17 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch:()->Unit, padding: PaddingVal
         }
     }
 }
+
 @Composable
-fun LoaderContent(){
+fun LoaderContent() {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
             .verticalScroll(state = rememberScrollState())
     ) {
-        Text(text = stringResource(R.string.title_main_screen),
+        Text(
+            text = stringResource(R.string.title_main_screen),
             color = Color.White,
             fontSize = 22.sp,
             modifier = Modifier
@@ -220,33 +250,38 @@ fun LoaderContent(){
             textAlign = TextAlign.Center
         )
 
-        Box (modifier = Modifier
-            .padding(16.dp)
-            .wrapContentSize()
-            .fillMaxWidth()
-            .background(colorResource(R.color.back_search1), shape = RoundedCornerShape(16.dp)),
-            Alignment.Center
-        ){
-            Row(modifier = Modifier
+        Box(
+            modifier = Modifier
+                .padding(16.dp)
                 .wrapContentSize()
                 .fillMaxWidth()
-                .padding(16.dp)
-                .background(colorResource(R.color.back_search2), shape = RoundedCornerShape(16.dp)),
+                .background(colorResource(R.color.back_search1), shape = RoundedCornerShape(16.dp)),
+            Alignment.Center
+        ) {
+            Row(
+                modifier = Modifier
+                    .wrapContentSize()
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .background(
+                        colorResource(R.color.back_search2),
+                        shape = RoundedCornerShape(16.dp)
+                    ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 ShimmerPlaceholder(
                     modifier = Modifier
-                        .padding(start = 10.dp,5.dp)
+                        .padding(start = 10.dp, 5.dp)
                         .size(width = 24.dp, height = 24.dp),
                     shape = RoundedCornerShape(8.dp)
                 )
 
-                Column (
+                Column(
                     modifier = Modifier
                         .wrapContentSize()
                         .padding(5.dp)
 
-                ){
+                ) {
                     ShimmerPlaceholder(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -264,29 +299,29 @@ fun LoaderContent(){
             shape = RectangleShape
         )
 
-       Row(
-           modifier = Modifier
-               .fillMaxWidth()
-       ) {
-           ShimmerPlaceholder(
-               modifier = Modifier
-                   .size(width = 150.dp, height = 150.dp)
-                   .padding(5.dp),
-               shape = RoundedCornerShape(16.dp)
-           )
-           ShimmerPlaceholder(
-               modifier = Modifier
-                   .size(width = 150.dp, height = 150.dp)
-                   .padding(5.dp),
-               shape = RoundedCornerShape(16.dp)
-           )
-           ShimmerPlaceholder(
-               modifier = Modifier
-                   .size(width = 150.dp, height = 150.dp)
-                   .padding(5.dp),
-               shape = RoundedCornerShape(16.dp)
-           )
-       }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            ShimmerPlaceholder(
+                modifier = Modifier
+                    .size(width = 150.dp, height = 150.dp)
+                    .padding(5.dp),
+                shape = RoundedCornerShape(16.dp)
+            )
+            ShimmerPlaceholder(
+                modifier = Modifier
+                    .size(width = 150.dp, height = 150.dp)
+                    .padding(5.dp),
+                shape = RoundedCornerShape(16.dp)
+            )
+            ShimmerPlaceholder(
+                modifier = Modifier
+                    .size(width = 150.dp, height = 150.dp)
+                    .padding(5.dp),
+                shape = RoundedCornerShape(16.dp)
+            )
+        }
         ShimmerPlaceholder(
             modifier = Modifier
                 .fillMaxWidth()

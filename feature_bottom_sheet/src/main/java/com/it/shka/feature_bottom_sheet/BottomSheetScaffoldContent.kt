@@ -26,6 +26,7 @@ import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -45,7 +46,7 @@ fun BottomSheetScaffoldContent(){//viewModel: DataViewModel
         modifier = Modifier
             .wrapContentSize()
             .fillMaxWidth()
-    ) {
+               ) {
         SearchBottomSheet()
         ButtonNavigationBottomSheet()
         BoxPointBottomSheet()

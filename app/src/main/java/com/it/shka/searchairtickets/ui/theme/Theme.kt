@@ -1,6 +1,7 @@
 package com.it.shka.searchairtickets.ui.theme
 
 import android.os.Build
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -20,8 +21,8 @@ private val LightColorScheme = lightColorScheme(
     primary = Blue40,
     secondary = White40,
     tertiary = White40,
-    background = White40,
-    onBackground = Black40
+    background = BlueDark40,
+    onBackground = White40
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -36,7 +37,7 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun SearchAirTicketsTheme(
-    darkTheme: Boolean = false,
+    darkTheme: Boolean = true,
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit

@@ -1,6 +1,7 @@
 package com.it.shka.searchairtickets.koin.app
 
 import android.app.Application
+import com.it.shka.searchairtickets.koin.module.LocalDataModule
 import com.it.shka.searchairtickets.koin.module.RepositoryModule
 import com.it.shka.searchairtickets.koin.module.RetrofitModule
 import com.it.shka.searchairtickets.koin.module.ViewModelModule
@@ -19,7 +20,8 @@ class AppKoin: Application() {
                 listOf(
                     RetrofitModule,
                     RepositoryModule,
-                    ViewModelModule
+                    ViewModelModule,
+                    LocalDataModule
                 )
             )
         }

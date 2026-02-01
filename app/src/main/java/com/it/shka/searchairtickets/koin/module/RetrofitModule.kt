@@ -1,6 +1,6 @@
 package com.it.shka.searchairtickets.koin.module
 
-import com.it.shka.feature_main.data.retrofit.ApiService
+import com.it.shka.feature_main.data.network.ApiService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import org.koin.dsl.module
 import retrofit2.Retrofit
