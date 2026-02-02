@@ -65,7 +65,7 @@ fun BottomSheetScaffoldContent() {
 }
 
 @Composable
-fun SearchBottomSheet(vm:BottomSheetViewModel ) {
+fun SearchBottomSheet(vm: BottomSheetViewModel) {
     val stateSearch by vm.searchCacheUi.collectAsState()
     val textWhere = remember { mutableStateOf("") }
     val text = remember { mutableStateOf("") }
@@ -185,6 +185,7 @@ fun SearchBottomSheet(vm:BottomSheetViewModel ) {
         }
     }
 }
+
 @Composable
 fun ButtonNavigationBottomSheet() {//vm: DataViewModel
     Row(
@@ -344,24 +345,8 @@ fun ButtonNavigationBottomSheet() {//vm: DataViewModel
 }
 
 @Composable
-fun BoxPointBottomSheet(vm : BottomSheetViewModel) {//vm: DataViewModel
+fun BoxPointBottomSheet(vm: BottomSheetViewModel) {//vm: DataViewModel
     val stateSearch by vm.searchCacheUi.collectAsState()
-    when{
-        stateSearch.cache !=null->{BoxPointBottomSheetContent()}
-        stateSearch.cache==null->{
-            ShimmerPlaceholder(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(250.dp)
-                    .padding(10.dp),
-                shape = RoundedCornerShape(16.dp)
-            )
-        }
-    }
-
-}
-@Composable
-fun BoxPointBottomSheetContent(){
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -517,4 +502,5 @@ fun BoxPointBottomSheetContent(){
             }
         }
     }
+
 }
