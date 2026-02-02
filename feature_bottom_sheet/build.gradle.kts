@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    api(libs.koin.androidx.compose)
     api(libs.androidx.lifecycle.runtime.ktx)
     api(libs.androidx.ui.graphics)
     api(libs.androidx.ui)

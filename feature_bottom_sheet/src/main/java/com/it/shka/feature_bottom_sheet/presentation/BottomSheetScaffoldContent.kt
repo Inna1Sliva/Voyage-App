@@ -20,6 +20,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.AbsoluteAlignment
@@ -39,17 +42,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.it.shka.feature_bottom_sheet.R
+import com.it.shka.feature_bottom_sheet.presentation.animation.ShimmerPlaceholder
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun BottomSheetScaffoldContent(){//viewModel: DataViewModel
+fun BottomSheetScaffoldContent() {
+    val viewmodel: BottomSheetViewModel = koinViewModel()
     Column(
         modifier = Modifier
             .wrapContentSize()
             .fillMaxWidth()
-               ) {
-        SearchBottomSheet()
+    ) {
+        SearchBottomSheet(viewmodel)
         ButtonNavigationBottomSheet()
-        BoxPointBottomSheet()
+        BoxPointBottomSheet(viewmodel)
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
@@ -57,27 +63,19 @@ fun BottomSheetScaffoldContent(){//viewModel: DataViewModel
         )
     }
 }
-@Composable
-fun SearchBottomSheet(){//vm: DataViewModel
-   // val stateSearch by vm.whereFromState.collectAsState()
-    val textWhere = remember { mutableStateOf( "")}
-    val text = remember { mutableStateOf( "")}
 
- //   LaunchedEffect(stateSearch.whereFrom) {
-   //     when(stateSearch.whereFrom !=null){
-    //        true -> textWhere.value= stateSearch.whereFrom.toString()
-     //       else -> textWhere.value = ""
-     //   }
-   // }
-  //  LaunchedEffect(stateSearch.where) {
-    //    when(  stateSearch.where !=null){
-    //        true ->  text.value = stateSearch.where.toString()
-     //       else -> text.value = ""
-      //  }
-  //  }
-    when{
-        textWhere.value.isNotEmpty()&&text.value.isNotEmpty() ->{}
+@Composable
+fun SearchBottomSheet(vm:BottomSheetViewModel ) {
+    val stateSearch by vm.searchCacheUi.collectAsState()
+    val textWhere = remember { mutableStateOf("") }
+    val text = remember { mutableStateOf("") }
+    LaunchedEffect(stateSearch) {
+        stateSearch.let { textWhere.value = it.cache.toString() }
     }
+    when {
+        textWhere.value.isNotEmpty() && text.value.isNotEmpty() -> {}
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -188,7 +186,7 @@ fun SearchBottomSheet(){//vm: DataViewModel
     }
 }
 @Composable
-fun ButtonNavigationBottomSheet(){//vm: DataViewModel
+fun ButtonNavigationBottomSheet() {//vm: DataViewModel
     Row(
         modifier = Modifier
             .padding(10.dp)
@@ -245,7 +243,10 @@ fun ButtonNavigationBottomSheet(){//vm: DataViewModel
                 modifier = Modifier
                     .padding(5.dp)
                     .size(width = 60.dp, height = 60.dp)
-                    .background(colorResource(R.color.color_blue), shape = RoundedCornerShape(10.dp)),
+                    .background(
+                        colorResource(R.color.color_blue),
+                        shape = RoundedCornerShape(10.dp)
+                    ),
 
                 ) {
                 Icon(
@@ -341,8 +342,26 @@ fun ButtonNavigationBottomSheet(){//vm: DataViewModel
 
     }
 }
+
 @Composable
-fun BoxPointBottomSheet(){//vm: DataViewModel
+fun BoxPointBottomSheet(vm : BottomSheetViewModel) {//vm: DataViewModel
+    val stateSearch by vm.searchCacheUi.collectAsState()
+    when{
+        stateSearch.cache !=null->{BoxPointBottomSheetContent()}
+        stateSearch.cache==null->{
+            ShimmerPlaceholder(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(250.dp)
+                    .padding(10.dp),
+                shape = RoundedCornerShape(16.dp)
+            )
+        }
+    }
+
+}
+@Composable
+fun BoxPointBottomSheetContent(){
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -356,7 +375,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
-                .clickable(onClick = {  }),//vm.setSearchWhere("Стамбул")
+                .clickable(onClick = { }),//vm.setSearchWhere("Стамбул")
             horizontalAlignment = AbsoluteAlignment.Left
         ) {
             Row(
@@ -404,7 +423,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp)
-                    .clickable(onClick = {  })//vm.setSearchWhere("Сочи")
+                    .clickable(onClick = { })//vm.setSearchWhere("Сочи")
             ) {
                 Row(
                     modifier = Modifier
@@ -452,7 +471,7 @@ fun BoxPointBottomSheet(){//vm: DataViewModel
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp)
-                    .clickable(onClick = {  })//vm.setSearchWhere("Пхукет")
+                    .clickable(onClick = { })//vm.setSearchWhere("Пхукет")
             ) {
                 Row(
                     modifier = Modifier

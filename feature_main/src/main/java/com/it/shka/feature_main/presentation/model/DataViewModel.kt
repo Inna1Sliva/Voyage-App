@@ -1,4 +1,4 @@
-package com.it.shka.feature_main.presentation
+package com.it.shka.feature_main.presentation.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,7 +6,6 @@ import com.it.shka.feature_main.domain.repository.RemoteDataSourceRepository
 import com.it.shka.feature_main.domain.model.Offer
 import com.it.shka.feature_main.domain.useCase.LocalDataSourceUseCase
 import com.it.shka.feature_main.presentation.extension.toDomain
-import com.it.shka.feature_main.presentation.extension.toSearchCacheUi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

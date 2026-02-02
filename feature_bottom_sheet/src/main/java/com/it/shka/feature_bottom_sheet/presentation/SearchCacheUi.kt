@@ -1,4 +1,4 @@
-package com.it.shka.feature_main.presentation
+package com.it.shka.feature_bottom_sheet.presentation
 
 
 data class SearchCacheUi(

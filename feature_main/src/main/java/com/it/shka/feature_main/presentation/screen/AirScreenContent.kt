@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.it.shka.feature_main.ItemList
 import com.it.shka.feature_main.R
-import com.it.shka.feature_main.presentation.DataViewModel
+import com.it.shka.feature_main.presentation.model.DataViewModel
 import com.it.shka.feature_main.presentation.animation.ShimmerPlaceholder
 import org.koin.androidx.compose.koinViewModel
 
