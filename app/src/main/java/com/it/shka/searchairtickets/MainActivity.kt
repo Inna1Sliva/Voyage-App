@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.it.shka.feature_bottom_nav.presentation.view.NavigationBottom
-import com.it.shka.feature_bottom_sheet.BottomSheetScaffoldContent
+import com.it.shka.feature_bottom_sheet.presentation.BottomSheetScaffoldContent
 import com.it.shka.feature_main.R
 import com.it.shka.searchairtickets.navigation.NavHostNavAppController
 import com.it.shka.searchairtickets.ui.theme.SearchAirTicketsTheme

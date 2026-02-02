@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalDataSourceRepository {
     suspend fun insertSearchCache(searchCache: SearchCache)
-    suspend fun updateSearchCache(id: Int)
+    suspend fun updateSearchCache(searchCache: SearchCache)
     suspend fun deleteSearchCache(searchCache: SearchCache)
     suspend fun getSearchCache(): Flow<SearchCache>
 }

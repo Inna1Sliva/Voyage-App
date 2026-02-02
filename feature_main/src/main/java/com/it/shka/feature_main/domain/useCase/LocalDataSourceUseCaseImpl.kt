@@ -2,7 +2,7 @@ package com.it.shka.feature_main.domain.useCase
 
 import com.it.shka.feature_main.domain.model.SearchCache
 import com.it.shka.feature_main.domain.repository.LocalDataSourceRepository
-import com.it.shka.feature_main.domain.repository.LocalDataSourceUseCase
+import com.it.shka.feature_main.domain.useCase.LocalDataSourceUseCase
 import kotlinx.coroutines.flow.Flow
 
 class LocalDataSourceUseCaseImpl(private val localDataSourceRepository: LocalDataSourceRepository):
@@ -11,8 +11,8 @@ class LocalDataSourceUseCaseImpl(private val localDataSourceRepository: LocalDat
        return localDataSourceRepository.insertSearchCache(searchCache = searchCache)
     }
 
-    override suspend fun updateSearchCache(id: Int) {
-        return localDataSourceRepository.updateSearchCache(id = id)
+    override suspend fun updateSearchCache(searchCache: SearchCache) {
+        return localDataSourceRepository.updateSearchCache(searchCache = searchCache)
     }
 
     override suspend fun deleteSearchCache(searchCache: SearchCache) {

@@ -1,21 +1,22 @@
-package com.it.shka.core_database.dao
+package com.it.shka.core.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.it.shka.core_database.entity.SearchCacheEntity
+import com.it.shka.core.entity.SearchCacheEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface SearchCacheDao {
+interface SearchCacheDao{
     @Insert
     suspend fun insertSearchCache(searchCacheEntity: SearchCacheEntity)
     @Update
-    suspend fun updateSearchCache(id: Int)
+    suspend fun updateSearchCache(searchCacheEntity: SearchCacheEntity)
     @Delete
     suspend fun deleteSearchCache(searchCacheEntity: SearchCacheEntity)
     @Query("SELECT * FROM cache")
-    suspend fun getSearchCache(): Flow<SearchCacheEntity>
+    fun getSearchCache(): Flow<SearchCacheEntity>
+
 }

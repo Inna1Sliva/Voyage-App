@@ -4,6 +4,7 @@ import android.app.Application
 import com.it.shka.searchairtickets.koin.module.LocalDataModule
 import com.it.shka.searchairtickets.koin.module.RepositoryModule
 import com.it.shka.searchairtickets.koin.module.RetrofitModule
+import com.it.shka.searchairtickets.koin.module.UseCase
 import com.it.shka.searchairtickets.koin.module.ViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -21,7 +22,8 @@ class AppKoin: Application() {
                     RetrofitModule,
                     RepositoryModule,
                     ViewModelModule,
-                    LocalDataModule
+                    LocalDataModule,
+                    UseCase
                 )
             )
         }

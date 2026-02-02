@@ -28,6 +28,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -69,8 +70,13 @@ fun AirScreenContent(padding: PaddingValues, onClickWereSearch: () -> Unit) {
 @Composable
 fun AirScreen(vm: DataViewModel, onClickWereSearch: () -> Unit, padding: PaddingValues) {
     val offerState = vm.offerState.collectAsState()
+    val searchCacheUiState = vm.searchCacheUiState.collectAsState()
     val whereFrom = rememberSaveable { mutableStateOf("") }
     val where = remember { mutableStateOf("") }
+    LaunchedEffect(searchCacheUiState) {
+        searchCacheUiState.value.cache.let { whereFrom.value = it.toString() }
+    }
+
 
     Column(
         modifier = Modifier
@@ -128,7 +134,7 @@ fun AirScreen(vm: DataViewModel, onClickWereSearch: () -> Unit, padding: Padding
                             unfocusedContainerColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent,
-                            unfocusedTextColor = colorResource(R.color.Basic_Grey_6),
+                            unfocusedTextColor = Color.White,
                             focusedTextColor = Color.White
                         ),
                         placeholder = {
